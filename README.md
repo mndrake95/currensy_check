@@ -11,7 +11,6 @@
 <br>
 Features smart throttling, request history, and a dual JSON/HTML interface.
 
-[Features](#-features) • [Tech Stack](#-tech-stack) • [Installation](#-installation--setup) • [Decomposition](#-task-decomposition)
 
 </div>
 
