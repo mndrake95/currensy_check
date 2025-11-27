@@ -58,6 +58,7 @@ currensy_check/
 ├── test_site/           # Project Settings
 ├── manage.py            # CLI entry point
 └── requirements.txt     # Dependencies
+```
 
 🚀 Installation & SetupFollow these steps to deploy the service locally.1. Clone & PrepareGet the code and navigate to the project directory:Bashgit clone https://github.com/mndrake95/currensy_check.git
 cd currensy_check
