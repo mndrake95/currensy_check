@@ -153,26 +153,3 @@ Detailed breakdown of time expenditure for each component.
 | **TOTAL** | **4.0** | **6.0** | *Added extra frontend features* |
 
 -----
-
-## ❓ Context & Questions
-
-Notes for the Reviewer / Team Lead:
-
-> **To Product Manager:**
->
->   * **Error Handling:** Currently serving cached data if the external API fails. Should we return a 500 error instead?
->   * **Throttling:** The 10s limit is currently global. Should it be per-user?
-
-> **To Team Lead:**
->
->   * **Async:** For production, `requests.get` is blocking. I recommend moving this to Celery or `aiohttp`.
->   * **Environment:** API Keys should be moved to `.env` (python-dotenv).
-
------
-
-\<div align="center"\>
-\<sub\>Developed by mndrake95\</sub\>
-\</div\>
-
-```
-```
