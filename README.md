@@ -1,4 +1,3 @@
-````markdown
 <div align="center">
 
 # 💰 USD Exchange Rate Service
@@ -59,7 +58,6 @@ currensy_check/
 ├── test_site/           # Project Settings
 ├── manage.py            # CLI entry point
 └── requirements.txt     # Dependencies
-````
 
 -----
 
