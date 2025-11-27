@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Курс Доллара</title>
+</head>
+<body>
+    <h1>Актуальный курс USD/RUB</h1>
+    {% if current %}
+        <p><strong>Курс:</strong> {{ current.rate }}</p>
+        <p><strong>Дата:</strong> {{ current.date_formatted }}</p>
+    {% else %}
+        <p>Данных пока нет.</p>
+    {% endif %}
+
+    <hr>
+<button id="update-btn" style="padding: 10px 20px; cursor: pointer;">
+    🔄 Обновить курс
+</button>
+<span id="status-msg" style="margin-left: 10px; color: gray;"></span>
+
+<script>
+    const btn = document.getElementById('update-btn');
+    const msg = document.getElementById('status-msg');
+
+    btn.addEventListener('click', function() {
+        msg.textContent = "Обновляю...";
+        btn.disabled = true; // Блокируем кнопку, чтобы не кликали 100 раз
+
+        // Делаем запрос к тому же URL, но просим JSON
+        fetch('/get-current-usd/', {
+            headers: {
+                'Accept': 'application/json' // Это скажет серверу зайти в IF
+            }
+        })
+        .then(response => {
+            if (response.status === 429) {
+                throw new Error("Слишком часто! Подождите 10 сек.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Если все ок — перезагружаем страницу, чтобы увидеть новые цифры
+            window.location.reload();
+        })
+        .catch(error => {
+            alert(error.message); // Показываем ошибку (например, таймер)
+            msg.textContent = "";
+            btn.disabled = false;
+        });
+    });
+</script>
+    <h2>История запросов</h2>
+    <table border="1" cellpadding="5" style="border-collapse: collapse;">
+        <tr>
+            <th>Дата обновления</th>
+            <th>Курс</th>
+        </tr>
+        {% for item in history %}
+        <tr>
+            <td>{{ item.date_formatted }}</td> 
+            <td>{{ item.rate }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
