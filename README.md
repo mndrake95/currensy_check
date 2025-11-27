@@ -58,3 +58,14 @@ currensy_check/
 ├── test_site/           # Project Settings
 ├── manage.py            # CLI entry point
 └── requirements.txt     # Dependencies
+
+🚀 Installation & SetupFollow these steps to deploy the service locally.1. Clone & PrepareGet the code and navigate to the project directory:Bashgit clone https://github.com/mndrake95/currensy_check.git
+cd currensy_check
+2. Environment SetupCreate a virtual environment to isolate dependencies:🪟 Windows:PowerShellpython -m venv venv
+.\venv\Scripts\activate
+🐧 Linux /  macOS:Bashpython3 -m venv venv
+source venv/bin/activate
+3. Dependencies & DatabaseInstall required packages and apply database migrations:Bashpip install -r requirements.txt
+python manage.py migrate
+4. LaunchStart the development server:Bashpython manage.py runserver
+🎉 Success! The service is now live at:http://127.0.0.1:8000/get-current-usd/🔨 Task DecompositionThe development lifecycle was divided into 6 key stages, ensuring a structured approach:[x] 📦 Project InitializationEnvironment setup (venv, git).Django project structure creation.[x] 🗄️ Database DesignExchangeRate model implementation.Admin panel configuration for monitoring.[x] 🧠 Core Business LogicIntegration with exchangerate-api.com.Throttling logic (10s cooldown implementation).[x] 🔌 API & ViewsUnified endpoint creation.Content negotiation logic (JSON vs HTML).[x] 🎨 Frontend InteractionHTML Template with data table.AJAX implementation for the "Update" button.[x] ✨ Final PolishError handling & edge cases.Documentation & Refactoring.⏱ Timings (Plan vs Fact)Detailed breakdown of time expenditure for each component.PhaseEstimate (h)Actual (h)NotesProject Setup0.50.5Git init, Venv, Django startModels & DB0.50.5Schema design & MigrationsCore Logic1.52.5API integration & ThrottlingFrontend & UI1.02.0Added AJAX Button & StylingDocs & Polish0.50.5README, CleanupTOTAL4.06.0Added extra frontend features
